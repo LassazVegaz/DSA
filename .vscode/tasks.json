@@ -6,7 +6,7 @@
     {
       "label": "Compile current file",
       "type": "shell",
-      "command": "pnpm tsc '${file}' --outFile compiled/index.js --sourceMap"
+      "command": "pnpm tsc '${file}' --outDir compiled --sourceMap"
     }
   ]
 }

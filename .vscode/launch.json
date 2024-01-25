@@ -9,8 +9,9 @@
       "request": "launch",
       "name": "Run current file",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/compiled/index.js",
-      "preLaunchTask": "Compile current file"
+      "program": "compiled/${fileBasenameNoExtension}.js",
+      "preLaunchTask": "Compile current file",
+      "console": "integratedTerminal"
     }
   ]
 }
