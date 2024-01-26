@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Run current file",
       "skipFiles": ["<node_internals>/**"],
-      "program": "compiled/${fileBasenameNoExtension}.js",
+      "program": "compiled/${relativeFileDirname}/${fileBasenameNoExtension}.js",
       "preLaunchTask": "Compile current file",
       "console": "integratedTerminal"
     }

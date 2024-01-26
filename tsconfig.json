@@ -1,3 +1,14 @@
 {
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "compiled",
+    "strict": true,
+    "noImplicitAny": true,
+    "lib": ["ESNext"],
+    "incremental": true,
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
+  },
   "exclude": ["node_modules", "compiled"]
 }
