@@ -26,7 +26,7 @@ const visualize = (g: Graph) => {
 //#endregion
 
 const addEdge = (g: Graph, a: number, b: number) => {
-  g[a].push(b);
+  g[a].enqueue(b);
 };
 
 const transpose = (g: Graph) => {
