@@ -25,4 +25,10 @@ export default class LinkedList {
       this.getTail()!.next = node;
     }
   }
+
+  enqueue(value: number) {
+    const node = new Node(value);
+    node.next = this.head;
+    this.head = node;
+  }
 }
