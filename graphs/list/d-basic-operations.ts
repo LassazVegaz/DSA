@@ -2,7 +2,7 @@ import LinkedList, { Node } from "../../linked-list/linked-list";
 import Graph from "./list-graph";
 
 //#region CREATE & VISUALIZE
-const createGraph = (vertices: number) => {
+export const createGraph = (vertices: number) => {
   const g: Graph = [];
 
   for (let i = 0; i < vertices; i++) g.push(new LinkedList());
@@ -10,7 +10,7 @@ const createGraph = (vertices: number) => {
   return g;
 };
 
-const visualize = (g: Graph) => {
+export const visualize = (g: Graph) => {
   for (let i = 0; i < g.length; i++) {
     let str = `${i}`;
     let node = g[i].head;
@@ -25,11 +25,11 @@ const visualize = (g: Graph) => {
 };
 //#endregion
 
-const addEdge = (g: Graph, a: number, b: number) => {
+export const addEdge = (g: Graph, a: number, b: number) => {
   g[a].enqueue(b);
 };
 
-const transpose = (g: Graph) => {
+export const transpose = (g: Graph) => {
   const transposedState: number[][] = [];
 
   for (let i = 0; i < g.length; i++) {
@@ -57,23 +57,3 @@ const transpose = (g: Graph) => {
     }
   }
 };
-
-const main = () => {
-  const g = createGraph(5);
-  console.log("Created a graph with 5 vertices");
-  visualize(g);
-
-  addEdge(g, 0, 1);
-  addEdge(g, 4, 1);
-  addEdge(g, 4, 2);
-  addEdge(g, 3, 4);
-  addEdge(g, 1, 0);
-  console.log("Edges added to graph: (0,1) (4,1) (4,2) (3,4) (1,0)");
-  visualize(g);
-
-  transpose(g);
-  console.log("Graph transposed");
-  visualize(g);
-};
-
-main();
