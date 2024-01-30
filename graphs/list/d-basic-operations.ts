@@ -29,6 +29,12 @@ export const addEdge = (g: Graph, a: number, b: number) => {
   g[a].enqueue(b);
 };
 
+export const addEdges = (g: Graph, ...edges: [number, number][]) => {
+  for (let i = 0; i < edges.length; i++) {
+    addEdge(g, ...edges[i]);
+  }
+};
+
 export const transpose = (g: Graph) => {
   const transposedState: number[][] = [];
 
