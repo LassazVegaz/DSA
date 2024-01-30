@@ -1,5 +1,9 @@
 export default class Stack {
-  arr: number[] = [];
+  private arr: number[] = [];
+
+  constructor(...init: number[]) {
+    this.arr.push(...init);
+  }
 
   push(n: number) {
     this.arr.push(n);
