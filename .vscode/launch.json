@@ -10,7 +10,16 @@
       "name": "Run current file",
       "skipFiles": ["<node_internals>/**"],
       "program": "compiled/${relativeFileDirname}/${fileBasenameNoExtension}.js",
-      "preLaunchTask": "Compile current file",
+      "preLaunchTask": "Compile files",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run test file",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "compiled/${relativeFileDirname}/${fileBasenameNoExtension}.test.js",
+      "preLaunchTask": "Compile files",
       "console": "integratedTerminal"
     }
   ]
