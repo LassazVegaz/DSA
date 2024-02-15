@@ -1,12 +1,12 @@
-export default class Stack {
-  private arr: number[] = [];
+export default class Stack<T> {
+  private arr: T[] = [];
 
-  constructor(...init: number[]) {
+  constructor(...init: T[]) {
     this.arr.push(...init);
   }
 
-  push(n: number) {
-    this.arr.push(n);
+  push(data: T) {
+    this.arr.push(data);
   }
 
   pop() {
