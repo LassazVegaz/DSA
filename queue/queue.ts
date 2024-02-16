@@ -1,6 +1,10 @@
 export default class Queue<T> {
   private arr: T[] = [];
 
+  constructor(...T: T[]) {
+    this.arr.push(...T);
+  }
+
   enqueue(data: T) {
     this.arr.push(data);
   }
