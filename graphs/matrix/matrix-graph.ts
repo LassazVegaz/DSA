@@ -1,6 +1,6 @@
 /**
  * Represents a matrix graph.
  */
-type MatrixGraph = number[][];
+type MatrixGraph<T = number> = T[][];
 
 export default MatrixGraph;
