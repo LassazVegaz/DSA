@@ -1,24 +1,32 @@
-// When value of the number increases the priority increases
-// This can be done by enabling a function to select the priority, but I want to keep
-// this simple
-// implementing this using Heap or Binary Search Tree is pretty straight forward
-// so I will go with LinkedList
-
 import LinkedList, { Node } from "../linked-list/linked-list";
 
-export default class PriorityQueue {
-  readonly list = new LinkedList();
+export enum PriorityQueueType {
+  min,
+  max,
+}
 
-  constructor(...data: number[]) {
+type PropertySelector<T> = (data: T) => number;
+
+export default class PriorityQueue<T> {
+  readonly list = new LinkedList<T>();
+
+  constructor(
+    private readonly type: PriorityQueueType,
+    /**
+     * Select a property to get the priority from `T`
+     */
+    private readonly selector: PropertySelector<T>,
+    data: T[] = []
+  ) {
     for (const d of data) this.enqueue(d);
   }
 
-  enqueue(data: number) {
+  enqueue(data: T) {
     this.list.enqueue(data);
     this.adjustList();
   }
 
-  dequeue(): number | null {
+  dequeue(): T | null {
     if (!this.list.head) return null;
 
     const head = this.list.head;
@@ -26,7 +34,7 @@ export default class PriorityQueue {
     return head.data;
   }
 
-  peek(): number | null {
+  peek(): T | null {
     return this.list.head?.data ?? null;
   }
 
@@ -34,10 +42,15 @@ export default class PriorityQueue {
     if (!this.list.head) return;
 
     let n = this.list.head;
-    let prev: null | Node = null;
+    let prev: null | Node<T> = null;
 
     while (n.next) {
-      if (n.data < n.next.data) {
+      const nPriority = this.selector(n.data);
+      const nextPriority = this.selector(n.next.data);
+      if (
+        (this.type === PriorityQueueType.max && nPriority < nextPriority) ||
+        (this.type === PriorityQueueType.min && nPriority > nextPriority)
+      ) {
         if (prev) {
           prev.next = n.next;
           n.next = prev.next.next;
