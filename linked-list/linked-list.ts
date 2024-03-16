@@ -1,11 +1,11 @@
-export class Node {
-  next: Node | null = null;
+export class Node<T = number> {
+  next: Node<T> | null = null;
 
-  constructor(public data: number) {}
+  constructor(public data: T) {}
 }
 
-export default class LinkedList {
-  head: Node | null = null;
+export default class LinkedList<T = number> {
+  head: Node<T> | null = null;
 
   getTail() {
     if (!this.head) return null;
@@ -17,7 +17,7 @@ export default class LinkedList {
     return tail;
   }
 
-  push(value: number) {
+  push(value: T) {
     const node = new Node(value);
 
     if (!this.head) this.head = node;
@@ -26,7 +26,7 @@ export default class LinkedList {
     }
   }
 
-  enqueue(value: number) {
+  enqueue(value: T) {
     const node = new Node(value);
     node.next = this.head;
     this.head = node;
