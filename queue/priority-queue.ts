@@ -38,6 +38,10 @@ export default class PriorityQueue<T> {
     return this.list.head?.data ?? null;
   }
 
+  isEmpty(): boolean {
+    return this.list.head === null;
+  }
+
   private adjustList() {
     if (!this.list.head) return;
 
